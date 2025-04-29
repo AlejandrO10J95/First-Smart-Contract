@@ -28,20 +28,24 @@ Construido y probado con Remix IDE usando Solidity 0.8.24.
 
 🔹 Funciones Principales
 
-Función	Descripción	Visibilidad	Retorna
+Función	                                         Descripción	                                                        Visibilidad	              Retorna
 
-addition(uint256 num1_, uint256 num2_)	Suma dos enteros sin signo.	pública	uint256
-substraction(uint256 num1_, uint256 num2_)	Resta dos enteros sin signo.	pública	uint256
-substraction2(int256 num1_, int256 num2_)	Resta dos enteros con signo.	pública	int256
-multiplier(uint256 num1_)	Multiplica el resultado por un número dado.	pública	-
-multiplier2(uint256 num1_)	Multiplica el resultado por un número solo si num1_ == 10.	pública	-
+addition(uint256 num1_, uint256 num2_)	         Suma dos enteros sin signo.	                                          pública	                uint256 
+
+substraction(uint256 num1_, uint256 num2_)	     Resta dos enteros sin signo.	                                          pública	                uint256 
+
+substraction2(int256 num1_, int256 num2_)	       Resta dos enteros con signo.	                                          pública	                int256 
+
+multiplier(uint256 num1_)	                       Multiplica el resultado por un número dado.	                          pública	                  -
+
+multiplier2(uint256 num1_)	                     Multiplica el resultado por un número solo si num1_ == 10.	            pública	                  -
 
 
 🔹 Eventos
 
-Evento	Parámetros	Descripción
-Addition	uint256 number1, uint256 number2, uint256 result	Emitido cuando la suma es exitosa.
-Subtraction	uint256 number1, uint256 number2, uint256 result	Emitido cuando la resta es exitosa.
+Evento	                    Parámetros	                                            Descripción
+Addition	                  uint256 number1, uint256 number2, uint256 result	      Emitido cuando la suma es exitosa.
+Subtraction	                uint256 number1, uint256 number2, uint256 result	      Emitido cuando la resta es exitosa.
 
 
 🛠️ Tecnologías Utilizadas
@@ -71,6 +75,7 @@ Interactuar con el Contrato: Usa la interfaz desplegada para llamar a funciones 
 ✅ Pruebas del Contrato
 
 🧪 Pruebas Funcionales
+
 Suma Básica: addition(5, 7) → resultado esperado: 12.
 
 Resta Básica: substraction(10, 3) → resultado esperado: 7.
@@ -79,12 +84,14 @@ Multiplicación: multiplier(2) → duplica el resultado actual.
 
 
 🛡️ Pruebas de Seguridad
+
 Validación de Entrada en multiplier2: La transacción se revierte a menos que la entrada sea 10.
 
 Emisión de Eventos: Las operaciones exitosas emiten los eventos correspondientes.
 
 
 🧪 Pruebas de Casos Límite
+
 Números Grandes: Prueba con valores cercanos a 2**256-1.
 
 Entradas Cero: Valida el comportamiento cuando uno o ambos números son 0.
@@ -93,6 +100,7 @@ Números Negativos: Maneja números negativos utilizando substraction2 con entra
 
 
 🔮 Mejoras Futuras
+
 Agregar mensajes de error descriptivos para mayor claridad.
 
 Ampliar la funcionalidad para incluir división, módulo y exponenciación.
