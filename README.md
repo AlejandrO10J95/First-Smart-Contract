@@ -2,54 +2,43 @@
 
 📋 Resumen del Proyecto
 
-La Calculadora Inteligente es un contrato inteligente basado en blockchain, desarrollado en Solidity, diseñado para realizar operaciones matemáticas esenciales (suma, resta y multiplicación) de forma segura y transparente. Este proyecto sigue las mejores prácticas en el desarrollo de contratos inteligentes, incluyendo el uso de modificadores de seguridad, emisiones de eventos para mayor transparencia y diseño modular.
+La Calculadora Inteligente es un contrato inteligente basado en blockchain, desarrollado en Solidity, diseñado para realizar operaciones matemáticas esenciales (suma, resta y multiplicación) de forma segura y transparente.
+Este proyecto sigue buenas prácticas de desarrollo en contratos inteligentes, incluyendo modificadores de seguridad, emisión de eventos y diseño modular.
 
 Construido y probado con Remix IDE usando Solidity 0.8.24.
 
 ✨ Características Clave
 
-
 ➕ Suma: Suma dos números.
 
-
-➖ Resta: Resta dos números (soporta tanto uint256 como int256).
-
+➖ Resta: Resta dos números (uint256 e int256).
 
 ✖️ Multiplicación: Multiplica el resultado almacenado por un número dado.
 
+🔒 Modificador de Seguridad: checkNumber para validar entradas críticas.
 
-🔒 Modificador de Seguridad: checkNumber asegura la validación de entradas para operaciones críticas.
+🧩 Eventos: Emite eventos en cada operación para garantizar transparencia.
 
-
-🧩 Eventos: Los eventos de suma y resta garantizan transparencia total en las transacciones.
 
 
 🧠 Detalles del Contrato Inteligente
-
 🔹 Funciones Principales
+add(uint256 num1_, uint256 num2_): Suma dos números enteros sin signo.
 
-Función	                                         Descripción	                                                        Visibilidad	              Retorna
+resta(uint256 num1_, uint256 num2_): Resta dos números enteros sin signo.
 
-addition(uint256 num1_, uint256 num2_)	         Suma dos enteros sin signo.	                                          pública	                uint256 
+resta2(int256 num1_, int256 num2_): Resta dos números enteros con signo.
 
-substraction(uint256 num1_, uint256 num2_)	     Resta dos enteros sin signo.	                                          pública	                uint256 
+multiplicador(uint256 num1_): Multiplica el resultado almacenado por el número proporcionado.
 
-substraction2(int256 num1_, int256 num2_)	       Resta dos enteros con signo.	                                          pública	                int256 
-
-multiplier(uint256 num1_)	                       Multiplica el resultado por un número dado.	                          pública	                  -
-
-multiplier2(uint256 num1_)	                     Multiplica el resultado por un número solo si num1_ == 10.	            pública	                  -
-
+multiplicador2(uint256 num1_): Multiplica el resultado solo si el número proporcionado es exactamente 10.
 
 🔹 Eventos
+Suma(uint256 numero1, uint256 numero2, uint256 resultado): Emitido al realizar una suma exitosa.
 
-Evento	                    Parámetros	                                            Descripción
-Addition	                  uint256 number1, uint256 number2, uint256 result	      Emitido cuando la suma es exitosa.
-Subtraction	                uint256 number1, uint256 number2, uint256 result	      Emitido cuando la resta es exitosa.
-
+Resta(uint256 numero1, uint256 numero2, uint256 resultado): Emitido al realizar una resta exitosa.
 
 🛠️ Tecnologías Utilizadas
-
 Solidity: 0.8.24
 
 IDE: Remix IDE (Ethereum)
@@ -58,65 +47,58 @@ Compilador de Solidity: versión 0.8.24
 
 Entorno de Pruebas: Remix VM (Cancún)
 
-
 🚀 Pasos de Implementación y Pruebas
+Abrir Remix IDE y acceder a https://remix.ethereum.org/.
 
-Abrir Remix IDE: Visita Remix IDE.
+Crear el archivo Calculator.sol y pegar el código del contrato.
 
-Crear el Archivo del Contrato: Crea un nuevo archivo Calculator.sol y pega el código del contrato.
+Compilar el contrato usando la versión 0.8.24 de Solidity.
 
-Compilar el Contrato: Ve a la pestaña del Compilador de Solidity, selecciona la versión 0.8.24 y haz clic en "Compilar Calculator.sol".
+Desplegar el contrato seleccionando Remix VM (Cancún) en "Deploy & Run Transactions".
 
-Desplegar el Contrato: En la pestaña "Deploy & Run Transactions", selecciona "Remix VM (Cancún)" y haz clic en "Deploy".
-
-Interactuar con el Contrato: Usa la interfaz desplegada para llamar a funciones como suma, resta, multiplicación, etc.
-
+Interactuar con las funciones desplegadas: suma, resta, multiplicación, etc.
 
 ✅ Pruebas del Contrato
-
 🧪 Pruebas Funcionales
+Suma básica: add(5, 7) → Resultado esperado: 12.
 
-Suma Básica: addition(5, 7) → resultado esperado: 12.
+Resta básica: resta(10, 3) → Resultado esperado: 7.
 
-Resta Básica: substraction(10, 3) → resultado esperado: 7.
-
-Multiplicación: multiplier(2) → duplica el resultado actual.
-
+Multiplicación: multiplicador(2) → Duplica el resultado almacenado.
 
 🛡️ Pruebas de Seguridad
+Validación en multiplicador2: Rechaza transacciones si el número no es exactamente 10.
 
-Validación de Entrada en multiplier2: La transacción se revierte a menos que la entrada sea 10.
-
-Emisión de Eventos: Las operaciones exitosas emiten los eventos correspondientes.
-
+Eventos: Cada operación correcta emite su evento correspondiente.
 
 🧪 Pruebas de Casos Límite
+Números grandes: Probar valores cercanos a 2**256 - 1.
 
-Números Grandes: Prueba con valores cercanos a 2**256-1.
+Entradas de cero: Validar cuando uno o ambos números son 0.
 
-Entradas Cero: Valida el comportamiento cuando uno o ambos números son 0.
-
-Números Negativos: Maneja números negativos utilizando substraction2 con entradas int256.
-
+Números negativos: Usar resta2 para manejar valores int256.
 
 🔮 Mejoras Futuras
+Agregar mensajes de error personalizados.
 
-Agregar mensajes de error descriptivos para mayor claridad.
+Ampliar operaciones: división, módulo, exponenciación.
 
-Ampliar la funcionalidad para incluir división, módulo y exponenciación.
+Control de acceso con múltiples roles (por ejemplo, que solo el propietario use multiplicador2).
 
-Implementar control de acceso con múltiples roles (por ejemplo, solo el propietario puede llamar a multiplier2).
-
-Integrar interacción con el frontend (por ejemplo, frontend dApp en React.js).
-
+Crear un frontend de interacción (por ejemplo, dApp en React.js).
 
 📜 Licencia
 Este proyecto está licenciado bajo LGPL-3.0 únicamente.
 
-
 👨‍💻 Autor
-Desarrollador Blockchain: [Alejandro Gómez]
-GitHub: [Alejandro10J95]
-LinkedIn: [www.linkedin.com/in/alejandro-gómez-martínez-123404259]
+Desarrollador Blockchain: Alejandro Gómez
 
-¡Gracias por visitar este proyecto! Abierto a colaboraciones y oportunidades en blockchain! 🔥
+
+GitHub: Alejandro10J95
+
+
+LinkedIn: Alejandro Gómez Martínez
+
+
+¡Gracias por visitar este proyecto!
+Abierto a colaboraciones y oportunidades en Blockchain 🚀🔥
